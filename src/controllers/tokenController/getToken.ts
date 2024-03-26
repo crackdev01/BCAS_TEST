@@ -4,6 +4,7 @@ import httpStatus from "http-status";
 import { MESSAGES } from "consts";
 import { tokensService } from "services";
 import { errorHandlerWrapper } from "utils/errorHandler.wrapper";
+import { NotFoundError } from "errors";
 
 type Params = {
   id: number;
@@ -30,7 +31,7 @@ export const getTokenHandler = async (
   if (result) {
     res.status(httpStatus.OK).json(result);
   } else {
-    res.status(httpStatus.NOT_FOUND).json(`${MESSAGES.DATA_NOT_EXIST}`);
+    throw new NotFoundError(MESSAGES.DATA_NOT_EXIST);
   }
 };
 
