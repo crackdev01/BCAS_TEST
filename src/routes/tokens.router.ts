@@ -9,4 +9,9 @@ tokensRouter.post(
   tokensController.createToken
 );
 
+tokensRouter.get(
+  "/:id",
+  tokensController.getToken
+)
+
 export default tokensRouter;
